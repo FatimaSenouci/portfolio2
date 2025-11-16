@@ -96,7 +96,8 @@
               <a :href="project.youtube" 
                   target="_blank" 
                  class="text-red-500 mt-1 block hover:underline">
-                   ▶ Voir la vidéo sur YouTube
+                   ▶ Watch the video on YouTube
+
                      </a>
             </div>
 
@@ -195,17 +196,18 @@
       <h3 class="text-lg font-semibold">Contact</h3>
       <p class="mt-2 text-gray-600 dark:text-gray-300">Remplis le formulaire ci-dessous pour m'envoyer un message — il sera transmis par email.</p>
 
-      <form @submit.prevent="sendContact" class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
-        <input x-model="form.name" required placeholder="Nom" class="p-3 border rounded bg-white dark:bg-gray-700" />
-        <input x-model="form.email" type="email" required placeholder="Email" class="p-3 border rounded bg-white dark:bg-gray-700" />
-        <input x-model="form.subject" placeholder="Sujet" class="p-3 border rounded col-span-2 bg-white dark:bg-gray-700" />
-        <textarea x-model="form.message" required placeholder="Message" class="p-3 border rounded col-span-2 h-28 bg-white dark:bg-gray-700"></textarea>
-        <div class="col-span-2 flex items-center gap-3">
-          <button type="submit" :disabled="sending" class="px-4 py-2 bg-indigo-600 text-white rounded">Envoyer</button>
-          <span x-show="sending">Envoi en cours…</span>
-          <span x-text="contactResponse" class="text-sm text-green-600"></span>
-        </div>
-      </form>
+      <form action="https://formspree.io/f/mnnlzznl" method="POST">
+  
+           <input type="text" name="name" placeholder="Your Name" required class="input" />
+
+           <input type="email" name="email" placeholder="Your Email" required class="input" />
+
+            <textarea name="message" placeholder="Your Message" required class="input"></textarea>
+
+           <button type="submit" class="btn">Send Message</button>
+
+       </form>
+
     </section>
 
   </main>
@@ -222,7 +224,7 @@
         "cover": "assets/images/tkinter-python.png",
         "link": "#",
         "youtube": "https://youtu.be/65YfVkCkslM",
-        "claps": 12,
+        "claps": 0,
         "slides": [
           {"type":"image","src":"assets/images/image(2).png"},
           {"type":"image","src":"assets/images/image(3).png"},
@@ -239,7 +241,7 @@
         "cover": "assets/images/electron.jpg",
         "link": "#",
          "youtube": "https://youtu.be/ei0eTcpcx2I",
-        "claps": 5,
+        "claps": 0,
         "slides": [
           {"type":"image","src":"assets/images/image(7).png"},
           {"type":"image","src":"assets/images/image(7).png"},
@@ -261,12 +263,66 @@
         "cover": "assets/images/volant.jpg",
         "link": "#",
         "youtube": "https://youtu.be/DWHXSJe4lIo",
-        "claps": 8,
+        "claps": 0,
         "slides": [
           {"type":"image","src":"assets/images/bw.jpg"}
            
         ]
+      },
+      {
+        "id": "p4",
+        "title": " CNN Transfer Learning in MATLAB | Classification of Endometrial Diseases (Cancer, Polyps & More)",
+        "short": "Classification of Endometrial Diseases (Cancer, Polyps & More)",
+        "year": "2024",
+        "cover": "assets/images/MATLABlogo.png",
+        "link": "#",
+        "youtube": "https://youtu.be/rLHXTZip2-w",
+        "claps": 0,
+        "slides": [
+          {"type":"image","src":"assets/images/cnn1.png"},
+          {"type":"image","src":"assets/images/cnn2.png"},
+          
+          
+          {"type":"image","src":"assets/images/hys1.png"},
+          {"type":"image","src":"assets/images/hys2.png"},
+          {"type":"image","src":"assets/images/hys3.png"},
+          {"type":"image","src":"assets/images/hys4.png"},
+          {"type":"image","src":"assets/images/hys5.png"}
+          
+        ]
+      },
+
+      {
+        "id": "p5",
+        "title": "Instagram UI Clone | Frontend Design with Tailwind CSS & Alpine.js",
+        "short": "Instagram UI clone design and development.",
+        "year": "2024",
+        "cover": "assets/images/HTML.jpg",
+        "link": "#",
+        "youtube": "https://youtu.be/eW1X7EheSUM",
+        "claps": 0,
+        "slides": [
+          {"type":"image","src":"assets/images/fer.png"},
+          {"type":"image","src":"assets/images/fer2.png"},
+          {"type":"image","src":"assets/images/fer3.png"},
+          {"type":"image","src":"assets/images/fer4.png"}
+        ]
+      },
+      {
+        "id": "p6",
+        "title": "Edge Detection & Segmentation — Echography Cancer Detector (Desktop)",
+        "short": "Desktop app for detecting suspicious regions in echographic images using mathematical morphology.",
+        "year": "2024",
+        "cover": "assets/images/MATLABlogo.png",
+        "link": "#",
+        "youtube": "https://youtu.be/3b3K0bX2xOA",
+        "claps": 0,
+        "slides": [
+          {"type":"image","src":"assets/images/det.png"},
+          {"type":"image","src":"assets/images/det2.png"}
+        ]
       }
+
       
     ]
   }
@@ -328,80 +384,6 @@
     }
   </script>
 
-  <!-- Backend examples & instructions (copy these to your server) -->
-  <!--
-  EXAMPLE: Node.js (Express) backend - save as server.js
-
-  const express = require('express');
-  const bodyParser = require('body-parser');
-  const nodemailer = require('nodemailer');
-  const fs = require('fs'); // simple storage for claps example
-
-  const app = express();
-  app.use(bodyParser.json());
-
-  // Simple in-file storage for claps (for demo only)
-  const CLAPS_FILE = './claps.json';
-  function readClaps(){ try { return JSON.parse(fs.readFileSync(CLAPS_FILE)); } catch { return {}; } }
-  function writeClaps(obj){ fs.writeFileSync(CLAPS_FILE, JSON.stringify(obj, null, 2)); }
-
-  app.post('/api/clap', (req,res)=>{
-    const {id} = req.body; if(!id) return res.status(400).json({error:'id required'});
-    const data = readClaps(); data[id] = (data[id]||0)+1; writeClaps(data); res.json({ok:true,claps:data[id]});
-  });
-
-  // Contact email using nodemailer
-  app.post('/api/contact', async (req,res)=>{
-    const {name,email,subject,message} = req.body;
-    if(!name||!email||!message) return res.json({success:false,error:'champs manquants'});
-
-    // Configure transporter with your SMTP credentials
-    const transporter = nodemailer.createTransport({ host:'smtp.example.com', port:587, secure:false, auth:{ user:'you@example.com', pass:'password' } });
-
-    try{
-      await transporter.sendMail({ from: '"Portfolio" <no-reply@example.com>', to: 'fatima@example.com', subject: `[Contact] ${subject||'Nouveau message'}`, text: `De: ${name} <${email}>
-
-${message}` });
-      res.json({success:true});
-    }catch(e){ console.error(e); res.json({success:false,error:'smtp error'}); }
-  });
-
-  app.listen(3000, ()=> console.log('Server started on 3000'));
-
-  -------------------------
-  EXAMPLE: PHP (simple) - contact.php
-
-  <?php
-  header('Content-Type: application/json');
-  $data = json_decode(file_get_contents('php://input'), true);
-  if(!$data || empty($data['name']) || empty($data['email']) || empty($data['message'])){
-    echo json_encode(['success'=>false,'error'=>'champs manquants']); exit;
-  }
-  $to = 'fatima@example.com';
-  $subject = '['.($data['subject']?:'Contact').']';
-  $message = "De: {$data['name']} <{$data['email']}>
-
-". $data['message'];
-  $headers = "From: no-reply@example.com
-Reply-To: {$data['email']}";
-  $sent = mail($to, $subject, $message, $headers);
-  echo json_encode(['success'=> $sent]);
-  ?>
-
-  // For claps in PHP, you can increment a value in a file or DB. Use proper locking.
-
-  -------------------------
-  FIREBASE (Cloud Functions + Firestore)
-  // Use firebase-admin and functions. Provide secure callable functions.
-
-  -------------------------
-  PRODUCTION NOTES:
-  - Always validate inputs server-side and apply rate-limiting (to avoid spam & clap abuse).
-  - Use CAPTCHA on the contact form if spam appears.
-  - For email, prefer a transactional provider (SendGrid, Mailgun, SES) with verified domain.
-  - Store claps in a proper DB (Firestore, MySQL, Postgres) rather than flat files.
-  - HTTPS is required for secure transport.
-  -->
-
+ 
 </body>
 </html>
