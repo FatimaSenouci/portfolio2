@@ -12,7 +12,7 @@
     .fade-up.show{ transform: translateY(0); opacity:1; }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans leading-relaxed" x-data="site()" x-init="init()" :class="{'dark': dark}">
+<body class="bg-gray-50 text-gray-400 font-sans leading-relaxed" x-data="site()" x-init="init()" :class="{'dark': dark}">
   <header class="bg-white dark:bg-gray-900 shadow-md">
     <div class="max-w-6xl mx-auto px-4 py-6 flex items-center justify-between">
       <div>
@@ -20,16 +20,16 @@
           <div class="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold">FS</div>
           <div>
             <h1 class="text-xl font-semibold">Fatima Senouci</h1>
-            <p class="text-sm text-gray-500 dark:text-gray-400">Ingénieure en informatique — UI/UX & apps</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400">Computer Science Engineer</p>
           </div>
         </a>
       </div>
 
       <nav class="hidden md:flex gap-6 items-center text-sm">
         <a href="#projects" class="hover:underline">Projets</a>
-        <a href="#skills" class="hover:underline">Skills</a>
+        <a href="#timeline" class="hover:underline">Timeline and Skills</a>
         <a href="#about" class="hover:underline">About me</a>
-        <a href="#contact" class="bg-indigo-600 text-white px-3 py-2 rounded-md">Contact me</a>
+        <a href="#contact" class="bg-indigo-600 text-white px-3 py-2 hover:bg-yellow-500 transition  rounded-md">Contact me</a>
       </nav>
 
       <div class="flex items-center gap-3">
@@ -56,22 +56,36 @@
 
   <main class="max-w-6xl mx-auto px-4 py-10">
     <!-- Hero -->
-    <section class="grid md:grid-cols-2 gap-8 items-center">
+    <<section 
+      x-data 
+      x-init="$el.classList.add('opacity-0'); setTimeout(() => $el.classList.add('opacity-100'), 100);" 
+         class="grid md:grid-cols-2 gap-8 items-center transition-all duration-700 opacity-0"
+       >
       <div>
         <h2 class="text-3xl md:text-4xl font-bold">Hello, I’m Fatima Senouci</h2>
-        <p class="mt-4 text-gray-600 dark:text-gray-300">Computer Science Engineer passionate about building smart, efficient solutions.</p>
+        <p class="mt-4 text-gray-600 dark:text-gray-600">Computer Science Engineer passionate about building smart, efficient solutions.</p>
         <div class="mt-6 flex gap-3">
-          <a href="#projects" class="px-4 py-2 bg-indigo-600 text-white rounded-md">My projects</a>
-          <a href="#contact" class="px-4 py-2 border rounded-md">Contact me</a>
+          <a href="#projects" class="px-4 py-2 bg-indigo-600 text-white hover:bg-yellow-500 rounded-md transition">My projects</a>
+          <a href="#contact" 
+               class="px-4 py-2 bg-yellow-400 hover:bg-yellow-500 text-black font-medium rounded-md transition">
+                 Contact me
+          </a>
+
         </div>
       </div>
       <div class="flex items-center justify-center">
-        <img src="assets/images/meee.jpg" alt="hero" class="rounded-lg shadow-lg">
+        <img src="assets/images/meee.jpg" alt="hero" class="rounded-lg shadow-lg rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
       </div>
     </section>
 
     <!-- Projects -->
-    <section id="projects" class="mt-14">
+    <section 
+  id="projects"
+  x-data 
+  x-init="$el.classList.add('opacity-0'); setTimeout(() => $el.classList.add('opacity-100'), 100);" 
+  class="mt-14 transition-all duration-700 opacity-0"
+>
+
       <div class="flex items-baseline justify-between">
         <h3 class="text-2xl font-semibold">Projects</h3>
         <p class="text-sm text-gray-500 dark:text-gray-400">You can visit my work by clicking</p>
@@ -159,44 +173,263 @@
       </div>
     </section>
 
-    <!-- Skills & timeline -->
-    <section id="skills" class="mt-14 grid md:grid-cols-2 gap-6">
-      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
-        <h3 class="text-xl font-semibold">Compétences</h3>
-        <ul class="mt-4 grid grid-cols-2 gap-2 text-sm text-gray-600 dark:text-gray-300">
-          <li>Python</li>
-          <li>Java / JavaFX</li>
-          <li>Flutter (Android)</li>
-          <li>Tailwind CSS</li>
-          <li>Alpine.js</li>
-          <li>Node.js / Express</li>
-          <li>Laravel</li>
-          <li>Databases (MySQL, MongoDB)</li>
+    <!-- Timeline + photo -->
+
+<section id="timeline" class="mt-14 bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+
+  <!-- Contenu principal : Timeline + Image -->
+  <div class="flex flex-col md:flex-row items-center gap-10">
+
+    <!-- Timeline -->
+    <div class="flex-1">
+      <h3 class="text-xl font-semibold">Timeline</h3>
+      <ol class="mt-4 space-y-4 text-sm text-gray-600 dark:text-gray-300">
+        <li><strong>2015</strong> — Scientific Baccalaureate — Grade: Quite Good</li>
+        <li><strong>2019</strong> — Bachelor’s Degree in Computer Systems</li>
+        <li><strong>2019</strong> — Final-year internship at Tiaret Airport (Control Tower)</li>
+        <li><strong>2021</strong> — Master’s Degree in Computer Engineering</li>
+        <li><strong>2024</strong> — AI Driver Drowsiness Detection Device</li>
+      </ol>
+    </div>
+
+    <!-- Image -->
+    <div class="flex-1 md:ml-10">
+      <img src="assets/images/edu.jpg "
+           alt="Education"
+           class="w-[350px] h-full object-cover rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+    </div>
+
+  </div>
+
+  <!-- Skills dans la même section -->
+  <div class="mt-10">
+    <h3 class="text-xl font-semibold mb-4">My Skills</h3>
+    <h4 class="text-xl font-semibold mb-4">Programming languages used in my projects</h4>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 place-items-center">
+
+      <div class="flex flex-col items-center">
+        <img src="assets/images/python1.jpg" class="w-12 h-12 mb-2 rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+        <p class="text-sm text-gray-700 dark:text-gray-300">Python</p>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <img src="assets/images/php.jpg" class="w-12 h-12 mb-2 rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+        <p class="text-sm text-gray-700 dark:text-gray-300">Php</p>
+      </div>
+
+      
+
+      <div class="flex flex-col items-center">
+        <img src="assets/images/tailwind.jpg" class="w-12 h-12 mb-2 rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+        <p class="text-sm text-gray-700 dark:text-gray-300">Tailwind CSS</p>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <img src="assets/images/nodejs1.jpg" class="w-12 h-12 mb-2 rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+        <p class="text-sm text-gray-700 dark:text-gray-300">Node.js</p>
+      </div>
+
+     
+
+      <div class="flex flex-col items-center">
+        <img src="assets/images/sql.jpg" class="w-12 h-12 mb-2 rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+        <p class="text-sm text-gray-700 dark:text-gray-300">MySQL / Sqlite</p>
+      </div>
+
+    </div>
+  </div>
+  <div class="mt-10">
+    
+    <h4 class="text-xl font-semibold mb-4">Hands-on experience with Arduino and Raspberry Pi</h4>
+     <p class="text-sm text-gray-700 dark:text-gray-300 mb-4">I have experience using Arduino and Raspberry Pi to build functional prototypes, including AI-assisted safety devices.
+         I integrated sensors, motors, and real-time alerts to create smart system behavior.
+         These projects improved my skills in embedded programming, electronics, and system reliabilit</p>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 place-items-center">
+
+      <div class="flex flex-col items-center">
+        <img src="assets/images/arduino.jpg" class="object-cover w-full h-48 mb-4 rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+        <p class="text-sm text-gray-700 dark:text-gray-300">Arduino</p>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <img src="assets/images/rasp.jpg" class="object-cover w-full h-48 mb-4 rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+        <p class="text-sm text-gray-700 dark:text-gray-300">Raspberry Pi</p>
+      </div>
+       </div>
+
+
+</section>
+
+
+<section 
+  id="contact-links"
+  x-data
+  x-init="$el.classList.add('opacity-0'); setTimeout(() => $el.classList.add('opacity-100'), 100);"
+  class="py-16 mt-14 bg-gray-100 dark:bg-gray-800 transition-all duration-700 opacity-0"
+>
+
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    
+    <!-- Titre -->
+    <h2 class="text-3xl font-bold mb-8 text-gray-800 dark:text-gray-100">Can't wait to collaborate!</h2>
+    
+    <!-- Boutons -->
+    <div class="flex justify-center gap-4 mb-8">
+      <a href="#contact" class="px-6 py-2 border border-gray-800 dark:border-gray-100 rounded hover:bg-gray-200 dark:hover:bg-0E2148 transition">Work with me</a>
+      <a href="#projects" class="px-6 py-2 border border-gray-800 dark:border-gray-100 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition">Explore my work</a>
+    </div>
+    
+    <!-- Liens vers les comptes -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+      
+      <!-- GitHub -->
+      <a href="https://github.com/FatimaSenouci" class="flex flex-col items-center">
+        <img src="assets/images/github.jpg" alt="GitHub" class="w-16 h-16 mb-2">
+        <span class="text-blue-500 text-sm">My Github</span>
+      </a>
+      
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/@Fatimadevs" class="flex flex-col items-center">
+        <img src="assets/images/youtube.jpg" alt="YouTube" class="w-16 h-16 mb-2">
+        <span class="text-blue-500 text-sm">My Youtube Channel</span>
+      </a>
+      
+      <!-- Hashnode -->
+      <a href="https://hashnode.com/@FatimaSnc" class="flex flex-col items-center">
+        <img src="assets/images/hashnode.jpg" alt="Hashnode" class="w-16 h-16 mb-2">
+        <span class="text-blue-500 text-sm">My Hashnode Account</span>
+      </a>
+      
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/fatima-senouci-5890a0139" class="flex flex-col items-center">
+        <img src="assets/images/linkdin.jpg" alt="LinkedIn" class="w-16 h-16 mb-2">
+        <span class="text-blue-500 text-sm">My LinkedIn Account</span>
+      </a>
+      
+    </div>
+
+    <!-- Contact info -->
+    <p class="mt-8 text-gray-700 dark:text-gray-300 text-sm">
+      Tiaret, Algeria<br>
+      Tel: 00213774527951<br>
+      Email: fubuntu.s@gmail.com<br>
+      <a href="https://twitter.com/fatimasenouci2" class="text-blue-500 hover:underline">X (Twitter)</a>: @fatimasenouci2<br>
+      
+    </p>
+
+  </div>
+</section>
+
+
+
+<section id="approach-services" class=" mt-14 py-16 bg-gray-50  dark:bg-gray-900">
+  <div class="max-w-6xl mx-auto px-4">
+    
+    <!-- My Approach -->
+    <h2 class="text-3xl font-bold mb-8 text-gray-800 dark:text-gray-100">My approach</h2>
+    <div class="grid md:grid-cols-3 gap-8 mb-16">
+      
+      <!-- Creativity -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <img src="assets/images/crea.png" alt="Creativity" class="rounded-lg mb-4 object-cover w-full h-48 rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+        <h4 class="text-sm font-semibold text-gray-500 mb-2">CREATIVITY</h4>
+        <p class="text-gray-700 dark:text-gray-300 text-sm">I combine technical skill and strategy to build powerful and user-friendly applications.</p>
+      </div>
+
+      <!-- Collaboration -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <img src="assets/images/colab.png" alt="Collaboration" class="rounded-lg mb-4 object-cover w-full h-48 rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+        <h4 class="text-sm font-semibold text-gray-500 mb-2">COLLABORATION</h4>
+        <p class="text-gray-700 dark:text-gray-300 text-sm">I ensure that each project I build aligns perfectly with my client's goals and vision.</p>
+      </div>
+
+      <!-- Problem Solving -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <img src="assets/images/creative.jpg" alt="Problem Solving" class="rounded-lg mb-4 object-cover w-full h-48 rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+        <h4 class="text-sm font-semibold text-gray-500 mb-2">PROBLEM SOLVING</h4>
+        <p class="text-gray-700 dark:text-gray-300 text-sm">I approach challenges in development with curiosity and persistence.</p>
+      </div>
+
+    </div>
+
+    <!-- My Services -->
+    <h2 class="text-3xl font-bold mb-8 text-gray-800 dark:text-gray-100">My services</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      
+      <!-- Application Development -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <img src="assets/images/creative.jpg" alt="Application Development" class="rounded-lg mb-4 object-cover w-full h-48 rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+        <h4 class="text-sm font-semibold text-blue-500 mb-2">APPLICATION DEVELOPMENT</h4>
+        <ul class="text-gray-700 dark:text-gray-300 text-sm list-disc list-inside">
+          <li>Desktop apps (Python, Electron)</li>
+          <li>AI/ML-based applications (image classification, data analysis, etc.)</li>
         </ul>
       </div>
 
-      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
-        <h3 class="text-xl font-semibold">Timeline</h3>
-        <ol class="mt-4 space-y-4 text-sm text-gray-600 dark:text-gray-300">
-          <li><strong>2021</strong> — Licence en Informatique</li>
-          <li><strong>2023</strong> — Master 1 Finance & Commerce International</li>
-          <li><strong>2024</strong> — Projet e‑commerce (UI/UX)</li>
-          <li><strong>2025</strong> — Application de gestion (Python)</li>
-        </ol>
+      <!-- Technical Writing -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <img src="assets/images/tw.png" alt="Technical Writing" class="rounded-lg mb-4 object-cover w-full h-48 rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+        <h4 class="text-sm font-semibold text-blue-500 mb-2">TECHNICAL WRITING</h4>
+        <ul class="text-gray-700 dark:text-gray-300 text-sm list-disc list-inside">
+          <li>Tutorials and guides on programming, AI, and software tools</li>
+          <li>Documentation for software projects</li>
+        </ul>
       </div>
-    </section>
+
+      <!-- Software Solutions & Consulting -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+        <img src="assets/images/fsf.jpg" alt="Software Solutions & Consulting" class="rounded-lg mb-4 object-cover w-full h-48 rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+        <h4 class="text-sm font-semibold text-blue-500 mb-2">SOFTWARE SOLUTIONS & CONSULTING</h4>
+        <ul class="text-gray-700 dark:text-gray-300 text-sm list-disc list-inside">
+          <li>Custom software solutions tailored to client needs</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
 
     <!-- About + Contact -->
-    <section id="about" class="mt-14 bg-white dark:bg-gray-800 rounded-lg p-6 shadow">
-      <h3 class="text-xl font-semibold">À propos</h3>
-      <p class="mt-3 text-gray-600 dark:text-gray-300">Je suis ingénieure en informatique, spécialisée en développement d'applications et design accessible. Je crée des produits qui fonctionnent et plaisent aux utilisateurs.</p>
-    </section>
+  <section id="about" class="mt-14 bg-white dark:bg-gray-800 rounded-lg p-8 shadow">
 
-    <section id="contact" class="mt-6 bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
-      <h3 class="text-lg font-semibold">Contact</h3>
-      <p class="mt-2 text-gray-600 dark:text-gray-300">Remplis le formulaire ci-dessous pour m'envoyer un message — il sera transmis par email.</p>
+  <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
 
-      <section id="contact" class="py-16 bg-gray-50 dark:bg-gray-900">
+    <!-- TEXTE À GAUCHE -->
+    <div>
+      <h3 class="text-2xl font-semibold">About Me</h3>
+      <p class="mt-4 text-gray-600 dark:text-gray-300 leading-relaxed">
+        I’m <strong>Fatima Senouci</strong>, I’m Fatima Senouci, 
+        a computer science engineer and technical writer passionate about 
+        creating impactful, user-centered applications.
+         I enjoy exploring new technologies, solving real-world problems, and building projects that help people. You can find my work on LinkedIn, YouTube, and Hashnode, and I share my learning journey on X (Twitter). I can’t wait to collaborate with you.
+      </p>
+    </div>
+
+    <!-- GRANDE PHOTO À DROITE -->
+    <div class="flex justify-center">
+      <img 
+        src="assets/images/fati.jpg"
+        alt="Fatima Senouci"
+       class="w-[250px] rounded-xl object-cover shadow-lg border rounded-lg shadow-lg transform transition duration-500 hover:scale-105"
+
+      />
+    </div>
+
+  </div>
+
+</section>
+
+
+
+    <section id="contact" class="mt-6 bg-white dark:bg-[#280A3E] p-6 rounded-lg shadow">
+      <h3 class="text-lg font-semibold font-bold">Let’s work together</h3>
+      <p class="mt-2 text-gray-600 dark:text-gray-300 font-bold">Fill out the form below to send me a message — it will be delivered directly to my email.</p>
+
+      <section id="contact" class="py-16 bg-[url('assets/images/mkm5.jpg')] bg-cover bg-center">
   <div class="max-w-3xl mx-auto px-6">
 
     <h2 class="text-3xl font-bold text-center text-gray-800 dark:text-white mb-10">
@@ -206,7 +439,7 @@
     <form 
       action="https://formspree.io/f/mnnlzznl" 
       method="POST"
-      class="bg-white dark:bg-gray-800 shadow-lg rounded-xl p-8 space-y-5 border border-gray-200 dark:border-gray-700"
+      class="bg-white dark:bg-black shadow-lg rounded-xl p-8 space-y-5 border border-gray-200 dark:border-gray-700"
     >
       <!-- Name -->
       <div>
@@ -218,7 +451,7 @@
           name="name"
           placeholder="Enter your name"
           required
-          class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+          class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#280A3E] text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
         />
       </div>
 
@@ -232,7 +465,7 @@
           name="email"
           placeholder="Enter your email"
           required
-          class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+          class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#280A3E] text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
         />
       </div>
 
@@ -246,14 +479,14 @@
           placeholder="Write your message..."
           rows="5"
           required
-          class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+          class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#280A3E] text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
         ></textarea>
       </div>
 
       <!-- Button -->
       <button 
         type="submit"
-        class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 rounded-lg transition-all shadow-md hover:shadow-lg"
+        class="w-full bg-[#0E2148] hover:bg-[#15415a] text-white font-medium py-3 rounded-lg transition-all shadow-md hover:shadow-lg"
       >
         Send Message
       </button>
